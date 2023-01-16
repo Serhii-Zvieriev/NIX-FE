@@ -226,6 +226,11 @@ function ask(question, yes, no) {
 //3333-1750=1583 это деньги которы мы откладываем каждый месяц
 //8000/1583=5,05369551 получаеться чуть больше 5 месяцев, в зависимости от того сколько дней в месяце,
 //можно посчитать за сколько дней мы бы насобирали нужную сумму
+function collectOnDream(monthlyIncome, monthlyExpenses, dreamPrice) {
+  return dreamPrice / (monthlyIncome - monthlyExpenses);
+}
+
+//console.log(collectOnDream(3333, 1750, 8000));
 // ========== END TASK 16 ============================================================
 
 // ========== TASK 17 ==========
