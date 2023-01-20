@@ -160,9 +160,31 @@ clear(elem);
 // ========== END TASK 9 ============================================================
 
 // ========== TASK 10 ==========
+const ulTask10 = document.querySelector(".ulTask10");
 
+function addListItem() {
+  let inputText = "";
+  do {
+    inputText = prompt("Введите элемент списка");
+    if (inputText === "" || !Boolean(inputText)) {
+      return;
+    }
+    let li = ulTask10.appendChild(document.createElement("li"));
+    li.textContent = inputText;
+    // ulTask10.append(li);
+  } while (inputText);
+}
+
+// addListItem();
 // ========== END TASK 10 ============================================================
 
 // ========== TASK 11 ==========
+const ulTask11 = document.querySelector("#ulTask11");
 
+let li2 = document.createElement("li");
+li2.textContent = 2;
+let li3 = document.createElement("li");
+li3.textContent = 3;
+
+ulTask11.firstElementChild.append(li2, li3);
 // ========== END TASK 11 ============================================================
