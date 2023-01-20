@@ -73,51 +73,90 @@ function showTextChildren() {
 }
 // showTextChildren();
 //2. Яка кількість нащадків – всіх вкладених (включаючи глибоко вкладені)?
+//Всё что ниже закоментиоровано это я пытался решить задачу самостоятельно
+//Я смог вывести все дочерние элементы любой вложенности в консоль, а вот
+//посчитать не вышло, решение которое я предлагаю я подсмотрел, но я понял
+//что там написано, у меня была идея сделать подобное решение, в смысле пушить каждый
+//элемент в массив, но реализовать самостоятельно не вышло
 
-function getAmountChildren(par) {
-  let count = 0;
-
-  if (par.children.length) {
-    for (let i = 0; i < par.children.length; i += 1) {
-      count += 1;
-      console.log(par.children[i]);
-      getAmountChildren(par.children[i]);
-    }
-    // return function () {
-    //   return (count += 1);
-    // };
-    return count;
-  } else {
-    return count;
-  }
-}
-
+// function getAmountChildren(par) {
+//   let count = 0;
+//   if (par.children.length) {
+//     for (let i = 0; i < par.children.length; i += 1) {
+//       count += 1;
+//       console.log(par.children[i]);
+//       getAmountChildren(par.children[i]);
+// console.log(ulTask4.childElementCount);
+// }
+// return function () {
+//   return (count += 1);
+// };
+//     return count;
+//   } else {
+//     return count;
+//   }
+// }
 //return function () {
 //return (count += 1);
 //};
-console.log(getAmountChildren(ulTask4));
+// console.log(getAmountChildren(ulTask4));
 // console.log(getAmountChildren(ulTask4.children[0]));
 // console.log(getAmountChildren(ulTask4.children[1]));
+
+const getElementsWithDepth = (el) =>
+  [...el.children].reduce(
+    (acc, n) => {
+      acc.push(...getElementsWithDepth(n));
+      return acc;
+    },
+    [{ el }]
+  );
+
+function getAmountChildren(par) {
+  return getElementsWithDepth(par).length - 1;
+}
+
+// console.log(getAmountChildren(ulTask4));
 // ========== END TASK 4 ============================================================
 
 // ========== TASK 5 ==========
-
+//Алерт будет вызван,
+//document.body.lastChild.nodeType
+//document - Каждая веб-страница, которая загружается в браузер, имеет свой собственный объект document.
+//Интерфейс документа служит точкой входа для получения содержимого веб - страницы
+//body - Элемент <body> предназначен для хранения содержания веб-страницы (контента), отображаемого в окне браузера
+//lastChild - последний потомок body
+//nodeType - Доступное только для чтения свойство Node.nodeType возвращает беззнаковое короткое целочисленное значение,
+//представляющее тип узла.
+//alert вызывает окно с содержимым
+//<script> выполняет содержимое скрипта внурти тега, по этому и срабатывает alert
 // ========== END TASK 5 ============================================================
 
 // ========== TASK 6 ==========
-
+//скрипт выведит BODY, ответ в html файле
 // ========== END TASK 6 ============================================================
 
 // ========== TASK 7 ==========
-
+//1. Об'єктом якого класу є document? по поводу класса не знаю, но являеться частью обьекта window
+//2. Яке місце він посідає у DOM-ієрархії? document - первый (самый высокий) в иерархии, от него всё начинается
+//3. Чи успадковує він від Node чи від Element, чи може від HTMLElement? Интерфейс Document наследует интерфейсы Node и EventTarget
 // ========== END TASK 7 ============================================================
 
 // ========== TASK 8 ==========
-
+const elem = document.querySelector("#elem");
+function clear(elem) {
+  elem.replaceChildren();
+  //elem.innerHTML = '';
+}
+clear(elem);
 // ========== END TASK 8 ============================================================
 
 // ========== TASK 9 ==========
-
+// alert(table); // таблиця, як і має бути
+// console.log(table.childNodes);
+// table.remove(); // Чому в документі залишився текст "ааа"?
+//Метод Element.remove() удаляет элемент из DOM - дерева, в котором он находится.
+// текст ааа являеться - HTMLElement.outerText
 // ========== END TASK 9 ============================================================
 
 // ========== TASK 10 ==========
@@ -127,15 +166,3 @@ console.log(getAmountChildren(ulTask4));
 // ========== TASK 11 ==========
 
 // ========== END TASK 11 ============================================================
-
-// ========== TASK 12 ==========
-
-// ========== END TASK 12 ============================================================
-
-// ========== TASK 13 ==========
-
-// ========== END TASK 13 ============================================================
-
-// ========== TASK 14 ==========
-
-// ========== END TASK 14 ============================================================
